@@ -1,0 +1,7 @@
+name = "FiniteHorizonValueIteration"
+uuid = "c7772946-478f-4fc8-9340-5223c2489741"
+authors = ["Tomáš Omasta"]
+version = "0.1.0"
+
+[compat]
+julia = "1.5"
