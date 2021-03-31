@@ -1,5 +1,6 @@
 using POMDPs
 using FiniteHorizonPOMDPs
+using POMDPModelTools
 
 
 #####################

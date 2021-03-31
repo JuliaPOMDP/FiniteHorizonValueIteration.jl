@@ -1,11 +1,12 @@
 using POMDPs
 using FiniteHorizonPOMDPs
+using POMDPModelTools
 
 
 #####################
 # MDP and State types
 #####################
-struct CustomFHExampleState 
+struct CustomFHExampleState
     position::Int64
     epoch::Int64
 end
@@ -44,13 +45,13 @@ function POMDPs.states(mdp::CustomFHExample)::Array{CustomFHExampleState}
     return mdp_states
 end
 
-POMDPs.stateindex(mdp::CustomFHExample, ss::CustomFHExampleState)::Int64 = (ss.epoch - 1) * mdp.no_states + ss.position 
+POMDPs.stateindex(mdp::CustomFHExample, ss::CustomFHExampleState)::Int64 = (ss.epoch - 1) * mdp.no_states + ss.position
 
 POMDPs.isterminal(mdp::CustomFHExample, ss::CustomFHExampleState) = FiniteHorizonPOMDPs.stage(mdp, ss) > horizon(mdp) || POMDPs.isterminal(mdp, ss.position)
 POMDPs.isterminal(mdp::CustomFHExample, position::Int64)::Bool = position in mdp.reward_states
 
 # returns transition distributions - works only for 1D Gridworld with possible moves to left and to right
-function POMDPs.transition(mdp::CustomFHExample, ss::CustomFHExampleState, a::Symbol)::SparseCat{Vector{CustomFHExampleState},Vector{Float64}}    
+function POMDPs.transition(mdp::CustomFHExample, ss::CustomFHExampleState, a::Symbol)::SparseCat{Vector{CustomFHExampleState},Vector{Float64}}
     sp = CustomFHExampleState[]
     prob = Float64[]
 

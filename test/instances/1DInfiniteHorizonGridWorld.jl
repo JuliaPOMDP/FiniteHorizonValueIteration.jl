@@ -1,8 +1,9 @@
 using POMDPs
 using FiniteHorizonPOMDPs
+using POMDPModelTools
 
 
-struct FHExampleState 
+struct FHExampleState
     position::Int64
     done::Bool # are we in a terminal state?
 end
@@ -42,7 +43,7 @@ function POMDPs.states(mdp::FHExample)::Array{FHExampleState}
     for i=1:mdp.no_states
         push!(mdp_states, FHExampleState(i, isterminal(mdp, i)))
     end
-   
+
     return mdp_states
 end
 
@@ -52,7 +53,7 @@ POMDPs.actionindex(mdp::FHExample, a::Symbol)::Int64 = findfirst(x->x==a, POMDPs
 POMDPs.discount(mdp::FHExample)::Number = mdp.discount_factor
 
 # returns transition distributions - works only for 1D Gridworld with possible moves to left and to right
-function POMDPs.transition(mdp::FHExample, s::FHExampleState, a::Symbol)::SparseCat{Vector{FHExampleState},Vector{Float64}}    
+function POMDPs.transition(mdp::FHExample, s::FHExampleState, a::Symbol)::SparseCat{Vector{FHExampleState},Vector{Float64}}
     sp = FHExampleState[]
     prob = Float64[]
 
