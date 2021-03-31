@@ -3,7 +3,7 @@ module FiniteHorizonValueIteration
 using POMDPs
 using FiniteHorizonPOMDPs
 using POMDPModelTools
-import POMDPs: Solver, solve, Policy, actions, value
+import POMDPs: Solver, solve, Policy, action, value
 import POMDPLinter: @POMDP_require, @req, @subreq
 import ProgressMeter: @showprogress
 
