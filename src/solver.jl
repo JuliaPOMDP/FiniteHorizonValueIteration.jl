@@ -55,7 +55,7 @@ function action(policy::FiniteHorizonValuePolicy, s::S) where S
     return policy.action_map[aidx]
 end
 
-@POMDP_require POMDPs.solve(solver::FiniteHorizonSolver, mdp::MDP) begin
+@POMDP_require solve(solver::FiniteHorizonSolver, mdp::MDP) begin
     M = typeof(mdp)
     S = statetype(M)
     A = actiontype(M)
@@ -100,7 +100,7 @@ function addstagerecord(fhpolicy::FiniteHorizonValuePolicy, qmat, util, policy, 
 end
 
 # MDP given horizon 5 assumes that agent can move 5 times
-function POMDPs.solve(solver::FiniteHorizonSolver, m::MDP)
+function solve(solver::FiniteHorizonSolver, m::MDP)
     if typeof(HorizonLength(m)) == InfiniteHorizon
         throw(ArgumentError("Argument m should be valid Finite Horizon MDP with methods from FiniteHorizonPOMDPs.jl/src/interface.jl implemented. If you are completely sure that you implemented all of them, you should also check if you have defined HorizonLength(::Type{<:MyFHMDP})"))
     end
