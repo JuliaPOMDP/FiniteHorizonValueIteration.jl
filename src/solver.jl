@@ -41,6 +41,12 @@ function FiniteHorizonValuePolicy(m::MDP)
     return FiniteHorizonValuePolicy(qmat, util, policy, ordered_actions(m), true, m)
 end
 
+function value(policy::FiniteHorizonValuePolicy, s::S) where S
+    stg = stage(policy.m, s)
+    stg == horizon(policy.m) + 1 && return 0.
+    sidx = stage_stateindex(policy.m, s)
+    return policy.util[stg][sidx]
+
 function action(policy::FiniteHorizonValuePolicy, s::S) where S
     stg = stage(policy.m, s)
     stg == horizon(policy.m) + 1 && return policy.action_map[1]
