@@ -1,5 +1,6 @@
 module FiniteHorizonValueIteration
 
+using POMDPs
 using FiniteHorizonPOMDPs
 using POMDPModelTools
 import POMDPs: Solver, solve, Policy, actions, value
