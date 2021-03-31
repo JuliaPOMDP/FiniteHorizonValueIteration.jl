@@ -46,6 +46,7 @@ function value(policy::FiniteHorizonValuePolicy, s::S) where S
     stg == horizon(policy.m) + 1 && return 0.
     sidx = stage_stateindex(policy.m, s)
     return policy.util[stg][sidx]
+end
 
 function action(policy::FiniteHorizonValuePolicy, s::S) where S
     stg = stage(policy.m, s)
