@@ -1,12 +1,12 @@
 using FiniteHorizonValueIteration
 using Test
 using POMDPs
-# using DiscreteValueIteration
-# using FiniteHorizonValueIteration
+using POMDPModelTools
+using DiscreteValueIteration
 using FiniteHorizonPOMDPs
-#
-# include("instances/1DCustomFHGW.jl")
-#
+
+include("instances/1DCustomFHGW.jl")
+
 @testset "verbose check" begin
     include("verbosecheck.jl")
 end

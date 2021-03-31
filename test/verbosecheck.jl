@@ -1,4 +1,3 @@
-include("instances/1DCustomFHGW.jl")
 
 # MDP parameters, ValueIteration minimizes the cost => cost is positive, reward is negative
 no_states = 10

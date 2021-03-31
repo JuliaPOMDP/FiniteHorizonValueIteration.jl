@@ -2,6 +2,7 @@ module FiniteHorizonValueIteration
 
 using POMDPs
 using FiniteHorizonPOMDPs
+using POMDPModelTools
 import POMDPLinter: @POMDP_require, @req, @subreq
 import ProgressMeter: @showprogress
 
