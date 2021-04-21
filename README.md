@@ -30,5 +30,5 @@ policy = solve(solver, mdp)
 ```
 
 # Output and validation
-The policy is stored to `FiniteHorizonPolicy`.
+The policy is stored to `FiniteHorizonPolicy`. 
 Example problems are defined in `test/instances/...`, examples are used in corresponding test files. Results are validated against the value iteration executed on all epochs simultaneously.
