@@ -22,8 +22,17 @@ struct FHExample <: MDP{FHExampleState, Symbol} # Note that our MDP is parametar
     noise::Float64
 end
 
+function FHExample(;no_states=11, actionCost=1., reward=-10., discount_factor=1., noise=.3)
+    actions = [:l, :r]
+    actionsImpact = Base.ImmutableDict(:l => -1, :r => 1)
+    reward_states = [1, no_states]
+    return FHExample(no_states, actions, actionCost, actionsImpact, reward_states, reward, discount_factor, noise)
+end
+
 POMDPs.isterminal(mdp::FHExample, s::FHExampleState)::Bool = s.position in mdp.reward_states
 POMDPs.isterminal(mdp::FHExample, position::Int64)::Bool = position in mdp.reward_states
+
+POMDPs.initialstate(mdp::FHExample) = SparseCat([FHExampleState(max(1, ceil(Int64, mdp.no_states / 2)))], [1.])
 
 function POMDPs.reward(mdp::FHExample, s::FHExampleState, a::Symbol, sp::FHExampleState)::Float64
     isterminal(mdp, sp.position) ? mdp.reward : mdp.actionCost

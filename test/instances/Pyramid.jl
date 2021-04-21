@@ -15,18 +15,24 @@ end
 PyramidState(position::Int64)::PyramidState = PyramidState(position, 0)
 
 struct PyramidMDP <: MDP{PyramidState, Symbol} # Note that our MDP is parametarized by the state and the action
-    horizon::Int64
+    _horizon::Int64
     actions::Vector{Symbol}
-    actionCost::Float64
-    actionsImpact::Base.ImmutableDict{Symbol, Int64}
+    action_cost::Float64
+    actions_impact::Base.ImmutableDict{Symbol, Int64}
     reward_states::Vector{Vector{Int64}}
     reward::Float64
     discount_factor::Float64 # discount factor
     noise::Float64
 end
 
+function PyramidMDP(;_horizon=10, action_cost=1., reward_states=[], reward=-10., discount_factor=1., noise=.3)
+    actions = [:l, :r]
+    actions_impact = Base.ImmutableDict(:l => -1, :r => 1)
+    return PyramidMDP(_horizon, actions, action_cost, actions_impact, reward_states, reward, discount_factor, noise)
+end
+
 FiniteHorizonPOMDPs.HorizonLength(::Type{<:PyramidMDP}) = FiniteHorizon()
-FiniteHorizonPOMDPs.horizon(mdp::PyramidMDP) = mdp.horizon
+FiniteHorizonPOMDPs.horizon(mdp::PyramidMDP) = mdp._horizon
 
 ###################################
 # changed elements of POMDPs interface
@@ -42,8 +48,8 @@ POMDPs.isterminal(mdp::PyramidMDP, ss::PyramidState) = FiniteHorizonPOMDPs.stage
 
 # returns transition distributions - works only for 1D Gridworld with possible moves to left and to right
 function POMDPs.transition(mdp::PyramidMDP, ss::PyramidState, a::Symbol)::SparseCat
-    sp = (  PyramidState(ss.position + mdp.actionsImpact[a], ss.epoch + 1),
-            PyramidState(ss.position + mdp.actionsImpact[a == :l ? :r : :l], ss.epoch + 1))
+    sp = (  PyramidState(ss.position + mdp.actions_impact[a], ss.epoch + 1),
+            PyramidState(ss.position + mdp.actions_impact[a == :l ? :r : :l], ss.epoch + 1))
     prob = (1. - mdp.noise, mdp.noise)
 
     return SparseCat(sp, prob)
@@ -73,7 +79,7 @@ function isreward(mdp::PyramidMDP, ss::PyramidState)::Bool
 end
 
 function POMDPs.reward(mdp::PyramidMDP, ss::PyramidState, a::Symbol, sp::PyramidState)::Float64
-    isreward(mdp, sp) ? mdp.reward : mdp.actionCost
+    isreward(mdp, sp) ? mdp.reward : mdp.action_cost
 end
 
 POMDPs.discount(mdp::PyramidMDP)::Number = mdp.discount_factor
