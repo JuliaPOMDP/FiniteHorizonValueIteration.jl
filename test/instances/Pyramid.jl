@@ -27,7 +27,7 @@ end
 
 function PyramidMDP(;_horizon=10, action_cost=1., reward_states=[], reward=-10., discount_factor=1., noise=.3)
     actions = [:l, :r]
-    actions_impact = Base.ImmutableDict(:l => -1, :r => 1)
+    actions_impact = Base.ImmutableDict(:l => 0, :r => 1)
     return PyramidMDP(_horizon, actions, action_cost, actions_impact, reward_states, reward, discount_factor, noise)
 end
 
