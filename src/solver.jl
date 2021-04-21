@@ -103,7 +103,7 @@ end
 # MDP given horizon 5 assumes that agent can move 5 times
 function solve(solver::FiniteHorizonSolver, m::MDP)
     if typeof(HorizonLength(m)) == InfiniteHorizon
-        throw(ArgumentError("Argument m should be valid Finite Horizon MDP with methods from FiniteHorizonPOMDPs.jl/src/interface.jl implemented. If you are completely sure that you implemented all of them, you should also check if you have defined HorizonLength(::Type{<:MyFHMDP})"))
+        throw(ArgumentError("Argument m should be valid Finite Horizon MDP with methods from FiniteHorizonPOMDPs.jl interface implemented. If you are completely sure that you implemented all of them, you should also check if you have defined HorizonLength(::Type{<:MyFHMDP})"))
     end
 
     fhpolicy = FiniteHorizonValuePolicy(m)
