@@ -1,6 +1,6 @@
 # FiniteHorizonValueIteration
-[![Build Status](https://travis-ci.org/Omastto1/FiniteHorizonValueIteration.jl.svg?branch=master)](https://travis-ci.org/JuliaPOMDP/FIB.jl)
-[![Coverage Status](https://coveralls.io/repos/github/Omastto1/FiniteHorizonValueIteration.jl/badge.svg?branch=master)](https://coveralls.io/github/Omastto1/FiniteHorizonValueIteration.jl?branch=master)
+[![Build Status](https://travis-ci.org/JuliaPOMDP/FiniteHorizonValueIteration.jl.svg?branch=master)](https://travis-ci.org/JuliaPOMDP/FiniteHorizonValueIteration.jl)
+[![Coverage Status](https://coveralls.io/repos/github/JuliaPOMDP/FiniteHorizonValueIteration.jl/badge.svg?branch=master)](https://coveralls.io/github/JuliaPOMDP/FiniteHorizonValueIteration.jl?branch=master)
 
 The package contains a finite horizon MDP solver for discrete problems. This algorithm is a modified version of infinite horizon value iteration.
 
@@ -30,5 +30,5 @@ policy = solve(solver, mdp)
 ```
 
 # Output and validation
-The policy is stored to `FiniteHorizonPolicy`.
+The policy is stored to `FiniteHorizonPolicy`. 
 Example problems are defined in `test/instances/...`, examples are used in corresponding test files. Results are validated against the value iteration executed on all epochs simultaneously.
