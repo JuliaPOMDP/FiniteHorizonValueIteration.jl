@@ -1,6 +1,6 @@
 # FiniteHorizonValueIteration
-[![Build Status](https://travis-ci.org/Omastto1/FiniteHorizonValueIteration.jl.svg?branch=master)](https://travis-ci.org/JuliaPOMDP/FIB.jl)
-[![Coverage Status](https://coveralls.io/repos/github/Omastto1/FiniteHorizonValueIteration.jl/badge.svg?branch=master)](https://coveralls.io/github/Omastto1/FiniteHorizonValueIteration.jl?branch=master)
+[![Build Status](https://travis-ci.org/JuliaPOMDP/FiniteHorizonValueIteration.jl.svg?branch=master)](https://travis-ci.org/JuliaPOMDP/FiniteHorizonValueIteration.jl)
+[![Coverage Status](https://coveralls.io/repos/github/JuliaPOMDP/FiniteHorizonValueIteration.jl/badge.svg?branch=master)](https://coveralls.io/github/JuliaPOMDP/FiniteHorizonValueIteration.jl?branch=master)
 
 The package contains a finite horizon MDP solver for discrete problems. This algorithm is a modified version of infinite horizon value iteration.
 
