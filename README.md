@@ -1,23 +1,23 @@
 # FiniteHorizonValueIteration
-[![Build Status](https://travis-ci.org/JuliaPOMDP/FiniteHorizonValueIteration.jl.svg?branch=master)](https://travis-ci.org/JuliaPOMDP/FiniteHorizonValueIteration.jl)
-[![Coverage Status](https://coveralls.io/repos/github/JuliaPOMDP/FiniteHorizonValueIteration.jl/badge.svg?branch=master)](https://coveralls.io/github/JuliaPOMDP/FiniteHorizonValueIteration.jl?branch=master)
+
+[![CI](https://github.com/JuliaPOMDP/FiniteHorizonValueIteration.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/JuliaPOMDP/FiniteHorizonValueIteration.jl/actions/workflows/CI.yml)
+[![codecov.io](http://codecov.io/github/JuliaPOMDP/FiniteHorizonValueIteration.jl/coverage.svg?branch=master)](http://codecov.io/github/JuliaPOMDP/FiniteHorizonValueIteration.jl?branch=master)
 
 The package contains a finite horizon MDP solver for discrete problems. This algorithm is a modified version of infinite horizon value iteration.
 
 ## Installation
 
-You must have [POMDPs.jl](https://github.com/JuliaPOMDP/POMDPs.jl) installed. To install `FiniteHorizonValueIteration`, run the following command:
+To install `FiniteHorizonValueIteration`, run the following command:
 
 ```julia
-using POMDPs
 using Pkg
-POMDPs.add_registry() # TODO: Is this still needed?
 Pkg.add("FiniteHorizonValueIteration")
 ```
 
 ## Usage
 
-```
+```julia
+using POMDPs
 using FiniteHorizonValueIteration
 
 mdp = MyMDP() # initialize MDP
