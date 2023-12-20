@@ -109,7 +109,7 @@ function solve(solver::FiniteHorizonSolver, m::MDP)
     fhpolicy = FiniteHorizonValuePolicy(m)
     util = zeros(length(stage_states(m, horizon(m) + 1)))
 
-    @showprogress 1 "Computing..." for stage=horizon(m):-1:1
+    @showprogress dt=1 desc="Computing..." for stage=horizon(m):-1:1
         if solver.verbose
             println("Stage: $stage")
         end
