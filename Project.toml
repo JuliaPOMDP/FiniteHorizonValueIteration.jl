@@ -1,7 +1,7 @@
 name = "FiniteHorizonValueIteration"
 uuid = "c7772946-478f-4fc8-9340-5223c2489741"
 authors = ["Tomáš Omasta"]
-version = "0.3.0"
+version = "0.3.1"
 
 [deps]
 FiniteHorizonPOMDPs = "8a13bbfe-798e-11e9-2f1c-eba9ee5ef093"
