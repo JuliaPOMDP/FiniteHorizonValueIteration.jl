@@ -1,7 +1,7 @@
 using FiniteHorizonValueIteration
 using Test
 using POMDPs
-using POMDPModelTools
+using POMDPTools
 using DiscreteValueIteration
 using FiniteHorizonPOMDPs
 
